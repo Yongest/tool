@@ -1,0 +1,496 @@
+@charset "utf-8";
+/*-------------------------设置html的样式-------------------------*/
+
+html {
+    outline: 0;
+    -webkit-text-size-adjust: none;
+    width: 100%;
+    height: 100%;
+}
+
+/*-------------------------全屏使用下面的代码，配合js使用-------------------------*/
+
+body {
+    position: relative;
+    font-family: Helvetica, "微软雅黑", 'STHeiti STXihei', 'Microsoft JhengHei', 'Microsoft YaHei', Tohoma, Arial;
+    background-color: #e8e8e8;
+    color: #666;
+    min-width: 300px;
+    max-width: 750px;
+    margin: 0 auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/*-------------------------1px线问题（ios8）-------------------------*/
+
+html.hairlines * {
+    border-width: .5px !important;
+}
+
+/*-------------------------清除页面的内外边距，清楚移动端点击出现的黄线-------------------------*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+div,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+code,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea,
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+/*-------------------------清除页面的下面代码的边距-------------------------*/
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+p,
+blockquote,
+dl,
+dt,
+dd,
+ul,
+ol,
+li,
+pre,
+code,
+form,
+fieldset,
+legend,
+button,
+input,
+textarea {
+    border: none;
+}
+
+/*-------------------------阻止屏幕旋转时字体自动调整-------------------------*/
+
+html,
+body,
+form,
+fieldset,
+p,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span {
+    -webkit-text-size-adjust: none;
+}
+
+/*-------------------------设置HTML5中的代码为块级元素-------------------------*/
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+
+/*-------------------------从新设置下面代码的样式-------------------------*/
+
+button,
+input,
+select,
+textarea {
+    font-family: helvetica, "微软雅黑", arial;
+    outline: none;
+}
+
+/*-------------------------清除页面的中ul a img的样式-------------------------*/
+
+ul,
+li,
+img,
+a,
+em {
+    list-style: none;
+    border: 0;
+    text-decoration: none;
+    font-style: normal;
+}
+
+:after,
+:before {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+/*-------------------------图片自适应调整 并解决图片缩放的失真问题-------------------------*/
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: none;
+    interpolation-mode: bicubic;
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: 100%;
+}
+
+/*-------------------------自动换行-------------------------*/
+
+.word_auto {
+    word-wrap: break-word;
+    word-break: normal;
+}
+
+.word_Single {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/*-------------------------只有chrome能用-------------------------*/
+
+.word_Multi {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    display: -moz-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -moz-line-clamp: 2;
+    box-orient: vertical;
+    -webkit-box-orient: vertical;
+    -moz-box-orient: vertical;
+}
+
+/*-------------------------自动居中-------------------------*/
+
+.mg-auto {
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+}
+
+/*-------------------------float-------------------------*/
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+/*-------------------------根据自己业务需求-------------------------*/
+
+.unstep:before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    right: -50%;
+    bottom: -50%;
+}
+
+.unstep {
+    position: relative;
+}
+
+.show {
+    display: block !important;
+}
+
+.hide {
+    word-break: break-all;
+    text-overflow: ellipsis;
+    display: -webkit-box !important;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.mt_26 {
+    margin-top: 0.52rem;
+}
+
+.pt_2 {
+    padding-bottom: 2rem;
+}
+
+.pt_52 {
+    padding-top: 5.2rem;
+}
+
+.pt_20 {
+    padding: 0 0.4rem;
+}
+
+.p_20 {
+    padding: 0.4rem;
+}
+
+.mt_3 {
+    margin-bottom: 3rem;
+}
+
+.mt_15 {
+    margin-top: 15px;
+}
+
+.mt_178 {
+    margin-top: 1.78rem;
+}
+
+.mt_176 {
+    margin-top: 1.76rem;
+}
+
+.mt_180 {
+    margin-top: 1.80rem;
+}
+
+.mt_222 {
+    margin-top: 2.22rem;
+}
+
+.s_l {
+    margin-left: 0 !important
+}
+
+.bord-top {
+    border-top: 1px solid #e8e8e8;
+}
+
+h2,
+h3,
+h5 {
+    font-weight: 500;
+    font-size: 0.72rem;
+}
+
+.clear_30 {
+    clear: both;
+    width: 100%;
+    height: 30px;
+}
+
+.clear_40 {
+    clear: both;
+    width: 100%;
+    height: 40px;
+}
+
+.clear_42 {
+    clear: both;
+    width: 100%;
+    height: 42px;
+}
+
+.clear_50 {
+    clear: both;
+    width: 100%;
+    height: 50px;
+}
+
+.clear_70 {
+    clear: both;
+    width: 100%;
+    height: 70px;
+}
+
+/*-------------------------清除浮动-------------------------*/
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.clearfix {
+    *zoom: 1;
+    /*IE/7/6*/
+}
+
+a {
+    display: block;
+    color: #646464;
+}
+
+.bg_f4 {
+    background: #f4b210;
+}
+
+.bg_f47505 {
+    background: #f47505;
+}
+
+.c_f {
+    color: #f4b210
+}
+
+.f_4 {
+    color: #f4b210;
+}
+
+.f4 {
+    color: #f47505;
+}
+
+.bg_f9 {
+    background: #F9F9F9;
+}
+
+.m4 {
+    margin-top: 0.44rem;
+}
+
+.a6 {
+    color: #a6a6a6;
+}
+
+.a59 {
+    color: #0597f4;
+}
+
+body {
+    margin: 0 auto
+}
+
+img {
+    font-size: 10px;
+}
+
+/* rem适配 */
+
+@media only screen and (min-width: 320PX) and (max-width:360PX) {
+    html {
+        font-size: 21.3333px
+    }
+}
+
+@media only screen and (min-width: 360PX) and (max-width:375PX) {
+    html {
+        font-size: 24px
+    }
+}
+
+@media only screen and (min-width: 375PX) and (max-width:390PX) {
+    html {
+        font-size: 25px;
+    }
+}
+
+@media only screen and (min-width: 390PX) and (max-width:414PX) {
+    html {
+        font-size: 26px
+    }
+}
+
+@media only screen and (min-width: 414PX) and (max-width:640PX) {
+    html {
+        font-size: 27.6px
+    }
+}
+
+@media screen and (min-width: 640PX) {
+    html {
+        font-size: 35px;
+    }
+}
+
+.hiddentxt {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hiddentxt2 {
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.hiddentxt1 {
+    text-overflow: ellipsis;
+    display: block;
+    overflow: hidden;
+    word-break: break-all;
+}
+
+/* vue {{}} */
+
+[v-cloak] {
+    display: none;
+}
+
+/* red point tips */
+
+.redpoint-tips::after {
+    position: relative;
+    content: '';
+    display: block;
+    background-color: #fa4607;
+    width: .32rem;
+    height: .32rem;
+    top: -1.3rem;
+    right: -1.75rem;
+    border-radius: 50%;
+    z-index: 104;
+}

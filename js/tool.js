@@ -3,8 +3,7 @@ define(['axios'], function (axios) {
     //     检查类型：isArr isObj isFun isEmptyObject
     //      功能函数：getUrl storage lstorage len contain toast nobodySide cover els addEv dedupe
     var tool = {
-        // apiDomain: (location.hostname === "localhost" || location.hostname === "test-m.ufxin.com" || location.hostname === "192.168.1.101" || location.hostname === "192.168.1.150") ? "http://test-m.ufxin.com" : location.hostname === "pre-m.ufxin.com" ? "http://pre.ufxin.com" : "",
-        apiDomain:  location.hostname === "m.ufxin.com" ? "http://m.ufxin.com" : location.hostname==='pre-m.ufxin.com'?'http://pre-m.ufxin.com':'http://test-m.ufxin.com',
+
         util: {
             isEmptyObject: function (obj) {
                 for (var key in obj) {
@@ -64,7 +63,7 @@ define(['axios'], function (axios) {
         getUrl: function (url, parameter) {
             if (parameter) {
                 url += '?';
-                for(var i =0 ;i<parameter.length;i++){
+                for (var i = 0; i < parameter.length; i++) {
                     url += i + '=' + parameter[i] + '&';
                 }
 
@@ -81,10 +80,10 @@ define(['axios'], function (axios) {
         /**
          * 封装了一个sessionStorage
          */
-        storage: function () {
+        sstorage: function () {
             if ('sessionStorage' in window) {
                 // console.log(arguments.length);
-                if (arguments.length === 1) {     //获取
+                if (arguments.length === 1) { //获取
                     var objStr = sessionStorage.getItem(arguments[0]);
                     var jsonObj = null;
                     try {
@@ -93,7 +92,7 @@ define(['axios'], function (axios) {
                         jsonObj = objStr;
                     }
                     return jsonObj;
-                } else if (arguments.length === 2) {     //设置
+                } else if (arguments.length === 2) { //设置
                     var objString = null
                     if (arguments[1] instanceof Object || arguments[1] instanceof Array) {
                         try {
@@ -104,7 +103,7 @@ define(['axios'], function (axios) {
                         }
                     } else if (typeof arguments[1] === "string" || typeof arguments[1] === "boolean") {
                         sessionStorage.setItem(arguments[0], arguments[1]);
-                    } else if (arguments[1] === null) {    //删除
+                    } else if (arguments[1] === null) { //删除
                         sessionStorage.removeItem(arguments[0]);
                     }
                 }
@@ -119,7 +118,7 @@ define(['axios'], function (axios) {
         lstorage: function () {
             if ('localStorage' in window) {
                 // console.log(arguments.length);
-                if (arguments.length === 1) {     //获取
+                if (arguments.length === 1) { //获取
                     var objStr = localStorage.getItem(arguments[0]);
                     var jsonObj = null;
                     try {
@@ -128,7 +127,7 @@ define(['axios'], function (axios) {
                         jsonObj = objStr;
                     }
                     return jsonObj;
-                } else if (arguments.length === 2) {     //设置
+                } else if (arguments.length === 2) { //设置
                     var objString = null;
                     if (arguments[1] instanceof Object || arguments[1] instanceof Array) {
                         try {
@@ -139,7 +138,7 @@ define(['axios'], function (axios) {
                         }
                     } else if (typeof arguments[1] === "string" || typeof arguments[1] === "boolean") {
                         localStorage.setItem(arguments[0], arguments[1]);
-                    } else if (arguments[1] === null) {    //删除
+                    } else if (arguments[1] === null) { //删除
                         localStorage.removeItem(arguments[0]);
                     }
                 }
@@ -149,17 +148,17 @@ define(['axios'], function (axios) {
             }
         },
         cover: function (v) {
-           
-            if(!v){
-                var cover =document.createElement('div');
-                cover.setAttribute('class',' yl_cover');
-                if(!document.querySelectorAll('.yl_cover').length){
+
+            if (!v) {
+                var cover = document.createElement('div');
+                cover.setAttribute('class', ' yl_cover');
+                if (!document.querySelectorAll('.yl_cover').length) {
                     document.body.appendChild(cover);
                 }
-                document.querySelector('.yl_cover').style ='display:block;';
+                document.querySelector('.yl_cover').style = 'display:block;';
                 this.nobodySide();
-            }else{
-                document.querySelector('.yl_cover').style ='display:none;';
+            } else {
+                document.querySelector('.yl_cover').style = 'display:none;';
                 this.nobodySide(1);
             }
 
@@ -179,12 +178,12 @@ define(['axios'], function (axios) {
             return result ? decodeURIComponent(result[2]) : null;
         },
         //获取对象的key的个数,
-        len:function (obj) {
-            if(!this.isObj(obj)){
+        len: function (obj) {
+            if (!this.isObj(obj)) {
                 throw new Error("len()方法中，所传值应该为一个对象");
             }
-            var i =0;
-            for(var key in obj){
+            var i = 0;
+            for (var key in obj) {
                 i++;
             }
             return i;
@@ -194,7 +193,7 @@ define(['axios'], function (axios) {
          * @param obj  待检测元素（number,string)。
          * @returns {boolean}  false or true
          */
-        contain:function (arr,obj) {
+        contain: function (arr, obj) {
             var i = arr.length;
             if (typeof obj === "undefined") {
                 throw new Error("待检测元素不能为空");
@@ -207,83 +206,61 @@ define(['axios'], function (axios) {
             return false;
         },
 
-        toast:function (text,position) {
-            var timer= null;
-            var position1 = position||'middle';
+        toast: function (text, position) {
+            var timer = null;
+            var position1 = position || 'middle';
             clearTimeout(timer);
-            if(document.querySelector('.yl_toast')){
+            if (document.querySelector('.yl_toast')) {
                 document.body.removeChild(document.querySelector('.yl_toast'));
             }
             var oDiv = document.createElement('div');
             var html = `<span style="text-align:center;font-size:.3rem;">${text}</span>`;
             oDiv.innerHTML = html;
-           
+
             oDiv.innerHTML = `${text}`;
-            oDiv.setAttribute("class",'yl_toast');
-            
-            if(position1 === 'bottom'){
-                oDiv.className+=" "+'yl_toast_bottom'
-                
-            }else{
-                oDiv.className+=" "+'yl_toast_middle'
+            oDiv.setAttribute("class", 'yl_toast');
+
+            if (position1 === 'bottom') {
+                oDiv.className += " " + 'yl_toast_bottom'
+
+            } else {
+                oDiv.className += " " + 'yl_toast_middle'
             }
             document.body.appendChild(oDiv);
-           
 
-            timer = setTimeout(function (){
-                if(document.querySelector('.yl_toast')){
+
+            timer = setTimeout(function () {
+                if (document.querySelector('.yl_toast')) {
                     document.body.removeChild(document.querySelector('.yl_toast'));
                 }
-            },1000);
+            }, 1000);
         },
 
-        nobodySide:function (r,els){
-            var r = r||'';
-           var els = els || 'body , html';
-           var nodeList = document.querySelectorAll(els);
-           if(!r){
-               for(var i = 0;i<nodeList.length;i++){
-                   nodeList[i].setAttribute('class','NobodySide');
-               }
-           }else{
-               for(var i = 0;i<nodeList.length;i++){
-                   nodeList[i].classList.remove('NobodySide');
-               }
-           }
-
-        },
-        els:function (vArg){
-        var subStr = vArg.substring(0, 5);
-        var firstChar = vArg.charAt(0);
-        switch(firstChar){
-            case "#":
-                return document.getElementById(vArg.substring(1));
-                break;
-            case ".":
-                return document.getElementsByClassName(vArg.substring(1));
-                break;
-            default:
-                return document.getElementsByTagName(vArg);
-                break;
-        }
-    },
-        addEv:function (obj,evt,fn){
-            if(obj.attachEvent) {
-                obj.attachEvent('on' + evt, fn);
-            }else{
-                    obj.addEventListener(evt,fn,false);
+        nobodySide: function (r, els) {
+            var r = r || '';
+            var els = els || 'body , html';
+            var nodeList = document.querySelectorAll(els);
+            if (!r) {
+                for (var i = 0; i < nodeList.length; i++) {
+                    nodeList[i].setAttribute('class', 'NobodySide');
+                }
+            } else {
+                for (var i = 0; i < nodeList.length; i++) {
+                    nodeList[i].classList.remove('NobodySide');
+                }
             }
+
         },
-        ajax:function (url,type,dataJson,status) {
+        ajax: function (url, type, dataJson, status) {
             return new Promise((resolve, reject) => {
                 //创建axios实例，把基本的配置放进去
                 var baseURl = this.apiDomain + '/YlShopApi/';
-                if(status){
+                if (status) {
                     baseURl = this.apiDomain;
                 }
-              
+
                 // 是否需要拦截code==-1的状态
-                let cancel ,promiseArr = {}
+                let cancel, promiseArr = {}
                 const CancelToken = axios.CancelToken;
                 var timeout = 1000;
                 const instance = axios.create({
@@ -299,11 +276,11 @@ define(['axios'], function (axios) {
                     cancelToken: new CancelToken(function executor(c) {
                         cancel = c;
                     }),
-                    cancelRequest:function(){
+                    cancelRequest: function () {
                         if (typeof cancel === 'function') {
                             // 取消请求
                             cancel()
-                        }else{
+                        } else {
                             console.log('cancel 不是一个方法')
                         }
                     }
@@ -316,7 +293,7 @@ define(['axios'], function (axios) {
                     } else {
                         promiseArr[config.url] = cancel
                     }
-                      return config
+                    return config
                 }, error => {
                     return Promise.reject(error)
                 })
@@ -331,19 +308,18 @@ define(['axios'], function (axios) {
                         url: url,
                         method: type,
                         data: data,
-                        
+
                     }).then(res => {
                         resolve(JSON.parse(res.request.response));
                     }).catch(err => {
                         reject(JSON.parse(err.request.response.msg));
                     });
-                }
-                else {
+                } else {
                     return instance({
                         url: url,
                         method: type,
                         params: dataJson,
-                        
+
                     }).then(res => {
 
                         resolve(JSON.parse(res.request.response));
@@ -353,48 +329,12 @@ define(['axios'], function (axios) {
                 }
             });
         },
-        //去重
-        dedupe:function (array){
+        //数组去重
+        dedupe: function (array) {
             return Array.from(new Set(array));
         },
-        oldUrl:(location.hostname==="localhost" || location.hostname==="test-m.ufxin.com" ||location.hostname==="192.168.1.101"||location.hostname==="192.168.1.150")?"http://test-m.ufxin.com":location.hostname==="pre-m.ufxin.com"?"http://pre.ufxin.com":"",
-        coverloading:function (bool){
-            if(bool){
-                if(!!document.querySelector('#coverloading')){
-                    return false;
-                }
-                var selector = null;
-                
-                selector = document.querySelector('body');
-                    
-                
-                var div = document.createElement("div");
-                div.id = 'coverloading';
-                selector.appendChild(div);
-                var html = `
-                <div class="mask"></div>
-                <div class="loading">
-                <div class="yl-spinner-triple-bounce">
-                    <div class="yl-spinner-triple-bounce1" style="width: 15px; height: 15px; background-color: rgb(255, 255, 255);"></div>                         <div class="yl-spinner-triple-bounce2" style="width: 15px; height: 15px; background-color:rgb(255, 255, 255);"></div> 
-                    <div class="yl-spinner-triple-bounce3" style="width: 15px; height: 15px; background-color: rgb(255, 255, 255);"></div></div></div>`;
-                    document.querySelector('#coverloading').innerHTML = html;
-                    
-            }else{
-                try{
-                    setTimeout(function (){
-                        document.querySelector('#coverloading').parentNode.removeChild( document.querySelector('#coverloading'));
-                    },500);
-                    
-                }catch(err){
-                    console.log(err);
-                }
-               
-            }
-           
-        },
-        // 未分离的接口
-        url:location.hostname==='m.ufxin.com'?'http://ufxin.com':location.hostname==="pre-m.ufxin.com"?"http://pre.ufxin.com":"http://test.ufxin.com",
-};
+       
+    };
 
     return tool;
 });
